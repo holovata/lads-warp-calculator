@@ -9,10 +9,10 @@ from src.views.web_interface import display_simulation_results
 def main():
     # Define common settings for banners
     settings = ISimulationSettings(
-        base_rate=0.006,
-        soft_pity=70,
-        soft_pity_increment=0.003,
-        hard_pity=90
+        base_rate=0.01,
+        soft_pity=60,
+        soft_pity_increment=0.1,
+        hard_pity=70
     )
 
     # Initialize banners with specific settings
