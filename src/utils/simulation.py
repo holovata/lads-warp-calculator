@@ -12,6 +12,8 @@ def run_simulation(banner, input_data):
             "pity": input_data["initial_pity"],
             "guaranteed": input_data["is_guaranteed"],
             "losses": 0,
+            "L1": False,
+            "L2": False
         }
 
         pulls_left = input_data["pulls"]
@@ -23,13 +25,15 @@ def run_simulation(banner, input_data):
             success = banner.pull(char_data["pity"], char_data["guaranteed"])
             if success:
                 char_data["copies"] += 1
+
                 char_data["pity"] = 0
                 char_data["guaranteed"] = False
                 char_data["losses"] = 0
             elif success is False:
                 char_data["losses"] += 1
-                # If specific logic based on losses is still required, adjust here or remove
+                char_data["guaranteed"] = True
                 char_data["pity"] = 0
+
             else:
                 char_data["pity"] += 1
 
