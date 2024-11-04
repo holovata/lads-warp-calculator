@@ -108,10 +108,6 @@ class QuadBanner(BaseBanner):
         # Calculate the current probability rate based on pity count
         rate = self.base_rate + self.soft_pity_increment * max(0, pity - self.soft_pity)
 
-        # Check for hard pity condition, which guarantees success
-        if pity + 1 >= self.hard_pity:
-            return True
-
         # Roll for success based on the current rate
         if random.random() <= rate:
             if guaranteed:
