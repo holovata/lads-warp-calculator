@@ -23,7 +23,7 @@ def main():
         "is_guaranteed": False,
         "desired_copies": 1,
         "num_simulations": 10000,
-        "is_summoning_pair": True
+        "is_summoning_pair": False
     }
     is_summoning_pair = input_data["is_summoning_pair"]
     # Initialize banners with specific settings
