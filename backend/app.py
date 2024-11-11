@@ -3,6 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for
 from src.utils.simulation import run_simulation, run_simulation_Pair
 from src.models.settings import ISimulationSettings
 from src.models.banner import SingleBanner, PairBanner_1, PairBanner_2, QuadBanner
+#working on frontend & deployment
+import time
 
 app = Flask(__name__)
 settings = ISimulationSettings(base_rate=0.01, soft_pity=60, soft_pity_increment=0.1, hard_pity=70)
@@ -10,6 +12,11 @@ settings = ISimulationSettings(base_rate=0.01, soft_pity=60, soft_pity_increment
 @app.route('/')
 def index():
     return redirect(url_for('single_banner'))
+
+#working on frontend & deployment
+@app.route('/time')
+def get_current_time():
+    return {'time': time.time()}
 
 @app.route('/single-banner', methods=['GET', 'POST'])
 def single_banner():
