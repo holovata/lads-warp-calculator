@@ -1,5 +1,3 @@
-# backend/api/simulation_routes.py
-
 from flask import Blueprint, request, jsonify, redirect, url_for
 from backend.src.utils.simulation import run_simulation, run_simulation_Pair
 from backend.src.models.settings import ISimulationSettings
@@ -13,25 +11,29 @@ settings = ISimulationSettings(base_rate=0.01, soft_pity=60, soft_pity_increment
 def index():
     return jsonify({"message": "Welcome to the Banner Probability Calculator API"}), 200
 
-@simulation_bp.route('/single-banner', methods=['POST'])
+@simulation_bp.route('/single-banner', methods=['GET', 'POST'])
 def single_banner():
-    data = request.json
-    num_rolls = int(data['num_rolls'])
-    initial_pity = int(data['initial_pity'])
-    is_guaranteed = data.get('is_guaranteed', False)
-    desired_copies = int(data['desired_copies'])
+    if request.method == 'POST':
+        data = request.json
+        num_rolls = int(data['num_rolls'])
+        initial_pity = int(data['initial_pity'])
+        is_guaranteed = data.get('is_guaranteed', False)
+        desired_copies = int(data['desired_copies'])
 
-    banner = SingleBanner(settings)
+        banner = SingleBanner(settings)
 
-    result = run_simulation(banner, {
-        "pulls": num_rolls,
-        "initial_pity": initial_pity,
-        "is_guaranteed": is_guaranteed,
-        "desired_copies": desired_copies,
-        "num_simulations": 10000
-    })
+        result = run_simulation(banner, {
+            "pulls": num_rolls,
+            "initial_pity": initial_pity,
+            "is_guaranteed": is_guaranteed,
+            "desired_copies": desired_copies,
+            "num_simulations": 10000
+        })
 
-    return jsonify({"result": result})
+        return jsonify({"result": result})
+
+    # Ответ на GET-запрос для маршрута /single-banner
+    return jsonify({"message": "This is the single banner endpoint. Please use POST to calculate probabilities."})
 
 @simulation_bp.route('/pair-banner', methods=['POST'])
 def pair_banner():
