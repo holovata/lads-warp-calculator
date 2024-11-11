@@ -1,7 +1,7 @@
 # models/banner.py
 import random
 from abc import ABC, abstractmethod
-from src.models.settings import ISimulationSettings
+from backend.src.models.settings import ISimulationSettings
 
 
 class BaseBanner(ABC):

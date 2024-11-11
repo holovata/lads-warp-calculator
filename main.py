@@ -1,10 +1,10 @@
 # main.py
 
-from src.utils.simulation import run_simulation
-from src.utils.simulation import run_simulation_Pair
-from src.models.settings import ISimulationSettings
-from src.models.banner import SingleBanner, PairBanner_1, PairBanner_2, QuadBanner
-from src.views.web_interface import display_simulation_results
+from backend.src.utils.simulation import run_simulation
+from backend.src.utils.simulation import run_simulation_Pair
+from backend.src.models.settings import ISimulationSettings
+from backend.src.models.banner import SingleBanner, PairBanner_1, PairBanner_2, QuadBanner
+from backend.src.views.web_interface import display_simulation_results
 
 
 def main():

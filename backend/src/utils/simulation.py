@@ -1,5 +1,5 @@
 # controllers/simulation.py
-from src.models.settings import ISimulationSettings
+from backend.src.models.settings import ISimulationSettings
 
 
 def run_simulation(banner, input_data):
