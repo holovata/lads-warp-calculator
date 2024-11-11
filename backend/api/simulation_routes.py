@@ -11,7 +11,6 @@ settings = ISimulationSettings(base_rate=0.01, soft_pity=60, soft_pity_increment
 
 @simulation_bp.route('/')
 def index():
-    # Удалим redirect и вернем приветственное сообщение в JSON-формате
     return jsonify({"message": "Welcome to the Banner Probability Calculator API"}), 200
 
 @simulation_bp.route('/single-banner', methods=['POST'])
