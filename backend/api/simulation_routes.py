@@ -27,7 +27,7 @@ def single_banner():
             "initial_pity": initial_pity,
             "is_guaranteed": is_guaranteed,
             "desired_copies": desired_copies,
-            "num_simulations": 10000
+            "num_simulations": 3000
         })
 
         return jsonify({"result": result})
@@ -51,7 +51,7 @@ def pair_banner():
             "is_guaranteed": is_guaranteed,
             "desired_copies": 1,
             "is_summoning_pair": is_summoning_pair,
-            "num_simulations": 10000
+            "num_simulations": 3000
         })
     else:
         banner = PairBanner_1(settings)
@@ -60,7 +60,7 @@ def pair_banner():
             "initial_pity": initial_pity,
             "is_guaranteed": is_guaranteed,
             "desired_copies": 1,
-            "num_simulations": 10000
+            "num_simulations": 3000
         })
 
     return jsonify({"result": result})
@@ -78,8 +78,8 @@ def quad_banner():
         "pulls": num_rolls,
         "initial_pity": initial_pity,
         "is_guaranteed": is_guaranteed,
-        "desired_copies": 1,  # По умолчанию
-        "num_simulations": 10000
+        "desired_copies": 1,
+        "num_simulations": 3000
     })
 
     return jsonify({"result": result})
